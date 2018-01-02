@@ -114,7 +114,7 @@ def main(vendors, query = ""):
     print()
     
     while not query:
-        query = input("What chemcial are you looking for?\n>")
+        query = input("What chemical are you looking for?\n>")
         query=query.lower()#Because case doesn't matter, and the @ notation
                            #makes it easy to hold down shift.
     print(query)
