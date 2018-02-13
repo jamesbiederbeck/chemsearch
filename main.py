@@ -37,6 +37,15 @@ medisca = vendor(
         favorite = True
         )
 
+healthcarelogistics = vendor(
+        name = "Health Care Logistics",
+        domain ="https://search.gohcl.com",
+        endpoint = "/results/",
+        urlsuffix = "",
+        spacechar = "%20",
+        favorite = False
+        )
+
 mckesson = vendor(
         name = "McKesson",
         domain = "https://connect.mckesson.com",
