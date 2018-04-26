@@ -4,7 +4,7 @@
 import webbrowser
 
 class vendor():
-    def __init__(self,name,domain,endpoint,urlsuffix,spacechar,favorite):
+    def __init__(self,name,domain,endpoint,urlsuffix,spacechar,favorite,**kwargs):
         self.name = name
         self.domain = domain
         self.endpoint = endpoint
