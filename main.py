@@ -119,6 +119,14 @@ emerson = vendor(
         favorite = False
         )
         
+biolmerieux = vendor(
+        name = "Biomerieux",
+        domain = "https://biomerieuxdirect.com",
+        endpoint = "/industry/search?text=",
+        urlsuffix = "",
+        spacechar = "+",
+        favorite = False
+        )
 
 def main(vendors, query = ""):
     print("Welcome to Jamesbot5000!")
