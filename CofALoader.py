@@ -38,6 +38,13 @@ medisca = vendor(
         )
 
 pcca = vendor(
+        name = "PCCA",
+        domain ="https://members.pccarx.com",
+        endpoint = "/Documents/1000CofA_pdf/",
+        urlsuffix = ".pdf",
+        spacechar = "",
+        favorite = True
+        )
         
 
 def main(vendors, query = ""):
