@@ -43,7 +43,8 @@ medisca = vendor(
         endpoint = "/Pages/ProductSearch.aspx?Search=",
         urlsuffix = "",
         spacechar = "%20",
-        favorite = True
+        favorite = True,
+        pages = {"order history":"https://www.medisca.com/my-orders"}
         )
 
 healthcarelogistics = vendor(
