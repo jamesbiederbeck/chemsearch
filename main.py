@@ -11,9 +11,18 @@ class vendor():
         self.urlsuffix = urlsuffix
         self.spacechar = spacechar
         self.favorite = favorite
+        if "pages" in kwargs:
+            self.pages = kwargs["pages"]
+        else:
+            self.pages = {}
         vendors.append(self)
         
     def search(self,string):
+        if len(self.pages.keys()):
+            for page in self.pages.keys():
+                if string in page:
+                    webbrowser.open(self.pages[page],new = 2, autoraise=True)
+                    return
         #this url will get opened in the default browser at the end of this
         #function.
         url = ""
