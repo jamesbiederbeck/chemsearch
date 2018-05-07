@@ -71,7 +71,11 @@ letco = vendor(
         endpoint = "/shop/item/get-list/type/search?term=",
         urlsuffix = "",
         spacechar = "+",
-        favorite = True
+        favorite = True,
+        pages = {
+            "cofa":"https://www.letcomedical.com/shop/certificate-of-analysis",
+            "awp":"https://www.letcomedical.com/shop/file/get-awp"
+            }
         )
 
 fagron = vendor(
@@ -80,7 +84,10 @@ fagron = vendor(
         endpoint = "/en-us/search.aspx?q=",
         urlsuffix = "&s_c=products",
         spacechar = "+",
-        favorite = True
+        favorite = True,
+        pages = {"order history":"https://shop.fagron.us/en-us/profile/orderhistory.aspx?bind=1",
+                 "awp":"file:///C:/Users/technician/Downloads/AWP%20List%20PDF%2011-11-16.pdf"
+                 }
         )
 
 totalPharmacySupply = vendor(
