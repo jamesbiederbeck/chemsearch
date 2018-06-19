@@ -44,7 +44,9 @@ medisca = vendor(
         urlsuffix = "",
         spacechar = "%20",
         favorite = True,
-        pages = {"order history":"https://www.medisca.com/my-orders"}
+        pages = {"order history":"https://www.medisca.com/my-orders",
+                 "awp":"file:///C:/Users/technician/Downloads/AWP%20(2).pdf"
+                }
         )
 
 healthcarelogistics = vendor(
@@ -74,7 +76,9 @@ letco = vendor(
         favorite = True,
         pages = {
             "cofa":"https://www.letcomedical.com/shop/certificate-of-analysis",
-            "awp":"https://www.letcomedical.com/shop/file/get-awp"
+            "awp":"https://www.letcomedical.com/shop/file/get-awp",
+            "order history":"https://www.letcomedical.com/shop/order/get-list"
+
             }
         )
 
@@ -105,7 +109,10 @@ pcca = vendor(
         endpoint = "/Products/ProductCatalog.aspx?search=",
         urlsuffix = "",
         spacechar = "+",
-        favorite = False
+        favorite = False,
+        pages = {
+            "order history":"https://members.pccarx.com/Account/OrderHistory.aspx"
+        }
         )
 
 spectrum = vendor(
@@ -114,7 +121,11 @@ spectrum = vendor(
         endpoint = "/search/go?w=",
         urlsuffix = "",
         spacechar = "+",
-        favorite = True
+        favorite = True,
+        pages = {
+            "order history":"https://www.spectrumrx.com/OA_HTML/xxsc_ibeCZzpGetTemplateFile.jsp?tmp=STORE_PSI_ORDER_SUMMARY_P",
+            "awp":"file:///C:/Users/technician/Pictures/master_ndc_awp.pdf"
+        }
         )
 
 emerson = vendor(
@@ -141,6 +152,8 @@ def main(vendors, query = ""):
     print("Here are the current vendors supported:")
     for each in vendors:
         print(each.name)
+        if len(each.pages):
+            print("    Supports: ",list(each.pages.keys()), sep = '\n')
     print()
     print("If you want to seach a particular vendor, just type your search,")
     print("and then @vendorname. Eg to search PCCA for thyroid, you would type")
@@ -162,6 +175,11 @@ def main(vendors, query = ""):
             for each in vendors:
                 if each.name.lower().startswith(query.split("@")[1]):
                     each.search(query.split("@")[0])
+    elif query.lower() == "history":
+        print("Loading order history")
+        for each in vendors:
+            if len(each.pages.keys()):
+                vendor.search(query)
     else:
         for each in vendors:
             if each.favorite:
