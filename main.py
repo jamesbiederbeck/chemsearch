@@ -131,7 +131,7 @@ spectrum = vendor(
 emerson = vendor(
         name = "Emerson",
         domain = "https://www.emersonecologics.com",
-        endpoint = "/shop/",
+        endpoint = "/shop/search?fft=term&term=",
         urlsuffix = "",
         spacechar = "%20",
         favorite = False
