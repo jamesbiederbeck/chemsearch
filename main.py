@@ -15,10 +15,12 @@ class vendor():
         self.urlsuffix = urlsuffix
         self.spacechar = spacechar
         self.favorite = favorite
+        self.pages = {}
         if "pages" in kwargs:
             self.pages = kwargs["pages"]
-        else:
-            self.pages = {}
+        self.replacementdictionary = {}
+        if "replacementdictionary" in kwargs:
+            self.replacementdictionary = kwargs["replacementdictionary"]
         vendors.append(self)
         
     def search(self,string):
@@ -36,7 +38,7 @@ class vendor():
         url += searchstring #no self because this is a function variable
         url += self.urlsuffix
         driver.get(url)
-
+        
 vendors = [] #a list of all our vendors        
         
 medisca = vendor(
@@ -51,6 +53,17 @@ medisca = vendor(
                 }
         )
 
+amazon = vendor(
+        name = "Amazon",
+        domain ="https://www.amazon.com",
+        endpoint = "/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=",
+        urlsuffix = "",
+        spacechar = "+",
+        favorite = False,
+        pages = {"order history":"https://www.amazon.com/gp/css/order-history/ref=nav_youraccount_bnav_ya_ad_orders"
+            }
+        )
+
 
 healthcarelogistics = vendor(
         name = "Health Care Logistics",
@@ -61,13 +74,25 @@ healthcarelogistics = vendor(
         favorite = False
         )
 
+sks = vendor(
+        name = "SKS",
+        domain ="https://www.sks-bottle.com",
+        endpoint = "/search_result.php?keywords=",
+        urlsuffix = "",
+        spacechar = "+",
+        favorite = False
+        )
+
 mckesson = vendor(
         name = "McKesson",
         domain = "https://connect.mckesson.com",
         endpoint = "/portal/site/smo/menuitem.87a0666be7398a3ece3ee6105740d0a0/?query=",
         urlsuffix = "",
         spacechar = "+",
-        favorite = False
+        favorite = False,
+        pages = {
+            "order history":"https://orderzone2.mckesson.com/SMOnline/odr_lst_opn.jsp"
+            }
         )        
 
 letco = vendor(
@@ -127,7 +152,7 @@ spectrum = vendor(
         favorite = True,
         pages = {
             "order history":"https://www.spectrumrx.com/OA_HTML/xxsc_ibeCZzpGetTemplateFile.jsp?tmp=STORE_PSI_ORDER_SUMMARY_P",
-            "awp":"file:///C:/Users/technician/Pictures/master_ndc_awp.pdf"
+            "awp":"https://www.spectrumrx.com/OA_HTML/LAB_DOCS/master_ndc_awp.pdf"
         }
         )
 
@@ -148,6 +173,19 @@ biolmerieux = vendor(
         spacechar = "+",
         favorite = False
         )
+
+msdonline = vendor(
+    name = "msd",
+    domain = "https://www.msdonline.com",
+    endpoint = "/Search?categoryId=All+Products&criteria=",
+    urlsuffix = "",
+    spacechar = "+",
+    favorite = False
+    )
+
+
+
+
 
 def main(vendors, query = ""):
     print("Welcome to Jamesbot5000!")
@@ -182,7 +220,7 @@ def main(vendors, query = ""):
         print("Loading order history")
         for each in vendors:
             if len(each.pages.keys()):
-                vendor.search(query)
+                each.search(query)
     else:
         for each in vendors:
             if each.favorite:
