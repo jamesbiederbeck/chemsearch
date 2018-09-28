@@ -1,8 +1,12 @@
 #chemsearch.py
 #A script by James Biederbeck to automate searching chemical sites
 #Just run, type in your search, and watch the magic happen.
-import webbrowser
+from selenium import webdriver
+import time
+import atexit
 
+driver = webdriver.Chrome()
+atexit.register(driver.quit)
 class vendor():
     def __init__(self,name,domain,endpoint,urlsuffix,spacechar,favorite,**kwargs):
         self.name = name
@@ -23,7 +27,7 @@ class vendor():
         if len(self.pages.keys()):
             for page in self.pages.keys():
                 if string in page:
-                    webbrowser.open(self.pages[page],new = 2, autoraise=True)
+                    driver.get(self.pages[page])
                     return
         #this url will get opened in the default browser at the end of this
         #function.
@@ -33,9 +37,7 @@ class vendor():
         searchstring = string.replace(" ", self.spacechar)
         url += searchstring #no self because this is a function variable
         url += self.urlsuffix
-        #new = 2 opens the search results in a new tab, and autoraise gives the 
-        #browser focus. 
-        webbrowser.open(url, new = 2, autoraise = True)
+        driver.get(url)
         
 vendors = [] #a list of all our vendors        
         
@@ -61,6 +63,7 @@ amazon = vendor(
         pages = {"order history":"https://www.amazon.com/gp/css/order-history/ref=nav_youraccount_bnav_ya_ad_orders"
             }
         )
+
 
 healthcarelogistics = vendor(
         name = "Health Care Logistics",
