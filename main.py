@@ -88,7 +88,8 @@ mckesson = vendor(
         spacechar = "+",
         favorite = False,
         pages = {
-            "order history":"https://orderzone2.mckesson.com/SMOnline/odr_lst_opn.jsp"
+            "order history":"https://orderzone2.mckesson.com/SMOnline/odr_lst_opn.jsp",
+            "returns":"https://connect.mckesson.com/portal/site/smo/menuitem.abce595de6c6ca3ece3ee6105740d0a0/?link=ln"
             }
         )        
 
@@ -115,7 +116,7 @@ fagron = vendor(
         spacechar = "+",
         favorite = True,
         pages = {"order history":"https://shop.fagron.us/en-us/profile/orderhistory.aspx?bind=1",
-                 "awp":"file:///C:/Users/technician/Downloads/AWP%20List%20PDF%2011-11-16.pdf"
+                 "awp":"file:///C:/Users/technician/Downloads/AWP%20List%20PDF%2001-20-17%20(FAUS).pdf"
                  }
         )
 
@@ -134,7 +135,7 @@ pcca = vendor(
         endpoint = "/Products/ProductCatalog.aspx?search=",
         urlsuffix = "",
         spacechar = "+",
-        favorite = False,
+        favorite = True,
         pages = {
             "order history":"https://members.pccarx.com/Account/OrderHistory.aspx"
         }
